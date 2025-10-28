@@ -6,7 +6,10 @@ import os # usado apenas para limpar a tela
 
 def limpar_tela(tipo):
     if tipo == 1:
-        os.system('cls' if os.name == 'nt' else 'clear')
+        try:
+         os.system('cls' if os.name == 'nt' else 'clear')
+        except:
+         pass
     else:
         print("\n")
         qualquertecla=input("Pressione Enter para continuar...")
@@ -121,39 +124,66 @@ fatores_quantidade = {
     "mmol": 0.001
 }
 
+fatores_velocidade = {
+    "m/s":1,
+    "km/h": 1/3.6
+}
+
+fatores_temp = {
+    "°C": 1,  # referência arbitrária
+    "K": 1,   # lidaremos com temperatura de modo especial
+    "°F": 1
+}
+
+
+fatores_lista = {
+    1: fatores_comprimento,
+    2: fatores_massa,
+    3: fatores_tempo,
+    4: fatores_corrente,
+    5: fatores_luz,
+    6: fatores_quantidade,
+    7: fatores_temp,
+    8: fatores_velocidade
+}
+
+
 # Funções para Conversão de Unidades
+def escolha_unidade (tipo,ordem):
+    fatores = fatores_lista [tipo]
+    opcoes = list(fatores.keys())
+
+    if ordem == 1:
+        for i in range(1,len(fatores)+1):
+            print(f" {i}. {list(fatores.keys())[i-1]}")
+    else: 
+        return opcoes
+
+
 
 def converter (valor, unidade_de, unidade_para,tipo):
-    if tipo == 1: #comprimento
-        fatores = fatores_comprimento
-    elif tipo == 2:#massa
-        fatores = fatores_massa
-    elif tipo == 3:#tempo
-        fatores = fatores_tempo
-    elif tipo == 4:#corrente
-        fatores = fatores_corrente
-    elif tipo == 5:#luz
-        fatores = fatores_luz
-    elif tipo == 6:#quantidade de matéria
-        fatores = fatores_quantidade
-    elif tipo == 7:#temperatura
-        if unidade_de == "C" and unidade_para == "K":
+    if tipo == 7:  # Temperatura
+        if unidade_de == "°C" and unidade_para == "K":
             return valor + 273.15
-        elif unidade_de == "K" and unidade_para == "C":
+        elif unidade_de == "K" and unidade_para == "°C":
             return valor - 273.15
-        elif unidade_de == "C" and unidade_para == "F":
+        elif unidade_de == "°C" and unidade_para == "°F":
             return (valor * 9/5) + 32
-        elif unidade_de == "F" and unidade_para == "C":
+        elif unidade_de == "°F" and unidade_para == "°C":
             return (valor - 32) * 5/9
-        elif unidade_de == "K" and unidade_para == "F":
+        elif unidade_de == "K" and unidade_para == "°F":
             return (valor - 273.15) * 9/5 + 32
-        elif unidade_de == "F" and unidade_para == "K":
+        elif unidade_de == "°F" and unidade_para == "K":
             return (valor - 32) * 5/9 + 273.15
-    
+        else:
+            return valor
+    else:
+        fatores = fatores_lista[tipo]
+
     valor_em_base = valor * fatores[unidade_de]
     valor_convertido = valor_em_base / fatores[unidade_para]
-    
     return valor_convertido
+
 
 #--------------------------------------------------------------------------------------
 #------------------------------- FUNÇÃO PRINCIPAL -------------------------------------
@@ -229,11 +259,11 @@ while escolha != '3':
             limpar_tela(2)
         elif operacao == '5':
             resultado = calcular_produto_vetorial(v1, v2)
-            v1.append(0)
-            v2.append(0)
+            v1_3d = v1 + [0]
+            v2_3d = v2 + [0]
             vresultante = [0,0,resultado]
             print(f"\nResultado do Produto Vetorial: {resultado}")
-            plotar_vetores(v1, v2, vresultante, "Produto Vetorial", is_3d=True)
+            plotar_vetores(v1_3d, v2_3d, vresultante, "Produto Vetorial", is_3d=True)
             limpar_tela(2)
         
 
@@ -250,10 +280,11 @@ while escolha != '3':
         print("4. Corrente Elétrica")
         print("5. Intensidade Luminosa")
         print("6. Quantidade de Matéria")
-        print("7. Temperatura\n")
+        print("7. Temperatura")
+        print("8. Velocidade\n")
         try:
             tipo = int(input(" - Digite o número do tipo de unidade desejada: "))
-            if tipo not in range(1,8):
+            if tipo not in range(1,9):
                 print("Tipo inválido. Retornando ao menu principal.")
                 limpar_tela(2)
                 continue
@@ -262,21 +293,41 @@ while escolha != '3':
             limpar_tela(2)
             continue
         limpar_tela(1)
-        print(" Digite de qual unidade para qual unidade deseja converter:\n")
-        for i in range(1,len(fatores_comprimento)+1):
-            print(f" {i}. {list(fatores_comprimento.keys())[i-1]}")
-        unidade_de = input("Digite a unidade atual: ")
-        unidade_de = unidade_de.strip()
-        unidade_de = unidade_de.lower()
-        unidade_para = input("Digite a unidade para a qual deseja converter: ")
-        unidade_para = unidade_para.strip()
-        unidade_para = unidade_para.lower()
+        escolha_unidade(tipo, 1)
+        opcoes = escolha_unidade(tipo, 2)
+        print("\nDigite de qual unidade para qual unidade deseja converter:\n")
+
+        ok = 0
+        while ok == 0:
+            unidade_de = int(input("Digite o número da unidade atual: ")) - 1
+            if unidade_de < 0 or unidade_de >= len(opcoes):
+                print("Opção não existente.")
+                limpar_tela(2)
+                escolha_unidade(tipo,1)
+                print("\n")
+            else:
+                  ok = 1
+
+        ok = 0
+        while ok == 0:
+             unidade_para = int(input("Digite o número da unidade para a qual deseja converter: ")) - 1
+             if unidade_para < 0 or unidade_para >= len(opcoes):
+                print("Opção não existente.")
+                limpar_tela(2)
+                escolha_unidade(tipo,1)
+                print("\n")
+             else:
+                 ok = 1
+
         valor = float(input("Digite o valor a ser convertido: "))
+        unidade_de = opcoes[unidade_de]
+        unidade_para = opcoes[unidade_para]
+
         try:
             valor_convertido = converter(valor, unidade_de, unidade_para, tipo)
             limpar_tela(1)
             print(f"\n O valor digitado foi: {valor} {unidade_de}\n")
-            print(f" valor convertido é: {valor_convertido} {unidade_para}\n")
+            print(f" valor convertido é: {valor_convertido:.2f} {unidade_para}\n")
             limpar_tela(2)
         except KeyError:
             print("Unidade inválida. Retornando ao menu principal.")
