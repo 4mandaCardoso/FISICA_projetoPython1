@@ -9,12 +9,12 @@
 
 ## 🧩 Índice
 
-1. [Sobre o Projeto](#Sobre-o-projeto)
-2. [Tecnologias Utilizadas](#Tecnologias-utilizadas)
-3. [Pré-requisitos](#Pré-requisitos)
-4. [Instalação](#Instalação)
-5. [Uso](#Uso)
-6. [Estrutura do Projeto](#Estrutura-do-projeto)
+1. [Sobre o Projeto](#-Sobre-o-projeto)
+2. [Tecnologias Utilizadas](#-Tecnologias-utilizadas)
+3. [Pré-requisitos](#-Pré-requisitos)
+4. [Instalação](#-Instalação)
+5. [Uso](#-Uso)
+6. [Estrutura do Projeto](#-Estrutura-do-projeto)
 
 ---
 
