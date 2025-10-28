@@ -9,6 +9,7 @@ tempo = ["h", "min", "s", "ms"]
 corrente = ["kA", "A", "mA", "µA"]
 luz = ["kcd", "cd", "mcd"]
 quantidade = ["kmol", "mol", "mmol"]
+velocidade = ["m/s","km/h"]
 
 area_unidades = {
     "Comprimento": comprimento,
@@ -17,7 +18,8 @@ area_unidades = {
     "Tempo": tempo,
     "Corrente Elétrica": corrente,
     "Intensidade Luminosa": luz,
-    "Quantidade de Substância": quantidade
+    "Quantidade de Substância": quantidade,
+    "Velocidade": velocidade
 }
 # Função para atualizar as unidades disponíveis com base no tipo selecionado - PÁGINA DE CONVERSÃO
 def atualizar_unidades(event):
@@ -92,6 +94,10 @@ fatores_quantidade = {
     "mol": 1,
     "mmol": 0.001
 }
+fatores_velocidade = {
+    "m/s": 1,
+    "km/h": 1/3.6
+}
 
 # Função para realizar a conversão - PÁGINA DE CONVERSÃO
 def converter(event):
@@ -141,12 +147,14 @@ def converter(event):
             fatores = fatores_luz
         elif tipo == "Quantidade de Substância":
             fatores = fatores_quantidade
+        elif tipo == "Velocidade":
+            fatores = fatores_velocidade
 
         valor_em_base = valor * fatores[unidade_de]
         resultado = valor_em_base / fatores[unidade_para]
 
     resultado_element = document.getElementById("resultado-texto")
-    resultado_element.innerHTML = f"{valor} {unidade_de} é igual a {resultado} {unidade_para}"
+    resultado_element.innerHTML = f"{valor} {unidade_de} é igual a {resultado:.2f} {unidade_para}"
 # Adiciona o evento ao botão de conversão - PÁGINA DE CONVERSÃO
 botao_converter = document.getElementById("botao-converter")
 botao_converter.addEventListener("click", create_proxy(converter))
