@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+ <meta charset="UTF="8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title> Operações com Vetores</title>
+ <link rel="stylesheet" href="style.css" />
+ <link rel="stylesheet" href="https://pyscript.net/releases/2025.8.1/core.css" />
+ <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+  <py-config>
+      packages = ["numpy", "matplotlib"]
+    </py-config>
+  </head>
+
+<body>
+ <a href="index.html" class="botao-voltar">← Voltar</a>
+
+ <div class="logo">
+     <img src="imagens/brasao-uesc.png" alt="Logo uesc" height="150px" />
+</div>
+
+ <h1>Operações com Vetores</h1>
+ <h3 class="subtitulos">Insira os componentes dos dois vetores:</h3>
+
+<div class="formulario">
+    <div class="vetor">
+        <h4>Vetor 1</h4>
+        <label>X:</label><input type="number" id="vetor-0-x" />
+        <label>Y:</label><input type="number" id="vetor-0-y" />
+    </div>
+
+    <div class="vetor">
+        <h4>Vetor 2</h4>
+        <label>X:</label><input type="number" id="vetor-1-x" />
+        <label>Y:</label><input type="number" id="vetor-1-y" />
+    </div>
+</div>
+
+<h3 class="subtitulos">Escolha a operação vetorial desejada:</h3>
+<div class="operacoes-vetores">
+     <button id="botao-soma" class="botao">Calcular Soma Vetorial</button>
+     <button id="botao-subtracao" class="botao">Calcular Subtração Vetorial</button>
+     <button id="botao-produto-escalar" class="botao">Calcular Produto Escalar</button>
+     <button id="botao-produto-vetorial" class="botao">Calcular Produto Vetorial</button>
+    </div>
+
+    <div class="resultados-vetores">
+        <div class="grafico">
+             <h3>Visualização Gráfica:</h3>
+             <div id="grafico" style="width: 100%; height: 500px; border: 1px solid #ccc;"></div>
+    </div>
+
+<div class="resultado">
+    <h3>Resultado:</h3>
+    <p id="resultado-vetores">--</p>
+</div>
+        <script type="py" src="Vetores.py"> </script> </div>
+
+
+<footer class="rodape">
+    <div class="creditos">
+        <p>© 2025.2 • Projeto I de Física<br>
+            Desenvolvido por:<strong> Amanda Cardoso, Hannah França e Mariana Assunção</strong><br>
+            Professor: <strong>Orlando José Katime Santrich</strong></p>
+        </div>
+    </footer>
+</body>
+</html>
