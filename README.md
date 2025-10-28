@@ -9,12 +9,12 @@
 
 ## 🧩 Índice
 
-1. [Sobre o Projeto](#sobre-o-projeto)  
-2. [Tecnologias Utilizadas](#tecnologias-utilizadas)  
-3. [Pré-requisitos](#pré-requisitos)  
-4. [Instalação](#instalação)  
-5. [Uso](#uso)  
-6. [Estrutura do Projeto](#estrutura-do-projeto)  
+1. [Sobre o Projeto](#sobre-o-projeto)
+2. [Tecnologias Utilizadas](#tecnologias-utilizadas)
+3. [Pré-requisitos](#pré-requisitos)
+4. [Instalação](#instalação)
+5. [Uso](#uso)
+6. [Estrutura do Projeto](#estrutura-do-projeto)
 
 ---
 
@@ -78,7 +78,7 @@ Execute o script no terminal e siga o menu interativo para realizar operações 
 
 ## 🗂️ Estrutura do Projeto
 
-´´´ bash
+```bash
 
 ├── proj_fisica-APENASPYTHON/
 │   └── projfisica1.py
@@ -95,5 +95,5 @@ Execute o script no terminal e siga o menu interativo para realizar operações 
 │       └── botao.png
 ├── README.md
 
-´´´
+```
 
