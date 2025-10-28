@@ -9,16 +9,16 @@
 
 ## 🧩 Índice
 
-1. [Sobre o Projeto](#sobre-o-projeto)
-2. [Tecnologias Utilizadas](#tecnologias-utilizadas)
-3. [Pré-requisitos](#pré-requisitos)
-4. [Instalação](#instalação)
-5. [Uso](#uso)
-6. [Estrutura do Projeto](#estrutura-do-projeto)
+1. [Sobre o Projeto](#Sobre-o-projeto)
+2. [Tecnologias Utilizadas](#Tecnologias-utilizadas)
+3. [Pré-requisitos](#Pré-requisitos)
+4. [Instalação](#Instalação)
+5. [Uso](#Uso)
+6. [Estrutura do Projeto](#Estrutura-do-projeto)
 
 ---
 
-## 📖 Sobre o Projeto
+## 📖 Sobre o projeto
 
 Este projeto foi desenvolvido com o objetivo de aplicar conceitos de vetores e unidades físicas em programação. Ele resolve dois problemas principais:
 
@@ -28,7 +28,7 @@ Este projeto foi desenvolvido com o objetivo de aplicar conceitos de vetores e u
 
 ---
 
-## ⚙️ Tecnologias Utilizadas
+## ⚙️ Tecnologias utilizadas
 
 - [Python](https://www.python.org/)
 - [Matplotlib](https://matplotlib.org/)
@@ -76,7 +76,7 @@ Execute o script no terminal e siga o menu interativo para realizar operações 
 
 ---
 
-## 🗂️ Estrutura do Projeto
+## 🗂️ Estrutura do projeto
 
 ```bash
 
@@ -96,4 +96,7 @@ Execute o script no terminal e siga o menu interativo para realizar operações 
 ├── README.md
 
 ```
+
+
+
 
